@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+ <!-- perform multiplication of complex numbers on a complex plane -->
+ <!--  b. HTML5, JavaScript                                        -->
+
+ <body>
+  <canvas id="plane" width="500" height="500" style="border:1px solid">
+   Your browser does not support the HTML5 canvas tag
+  </canvas>
+
+  <div id="coords"></div>
+
+  <script>
+   canvas = document.getElementById('plane');
+   rect = canvas.getBoundingClientRect();
+
+   ctx = canvas.getContext('2d');
+   ctx.moveTo(0,   250);
+   ctx.lineTo(500, 250);   
+   ctx.moveTo(250, 0);
+   ctx.lineTo(250, 500);   
+   ctx.stroke();
+
+   canvas.addEventListener('mousemove', function(event) {
+    a = (event.clientX - rect.left - 250) / 25;
+    b = (rect.top - event.clientY + 250) / 25;
+
+    document.getElementById("coords").innerHTML = a + " + " + b + " * i";
+   });
+  </script>
+
+ </body>
+</html>
